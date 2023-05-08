@@ -1,4 +1,4 @@
-import { Constants } from "../FourInARow/index.js";
+import { Constants } from "../gameLogic/index.js";
 import { StatusAreaConfig, TokenColor } from "../constants/index.js";
 import GameObject from "./GameObject.js";
 

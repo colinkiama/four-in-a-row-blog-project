@@ -14,8 +14,6 @@ export default class GameObject {
     }
 
     clear() {
-        // Replace existing pixels with what is drawn
         this.context.clearRect(this.x, this.y, this.width, this.height);
-        this.context.fillRect(this.x, this.y, this.width, this.height);
     }
 }

@@ -1,4 +1,4 @@
-import { Constants } from "./FourInARow/index.js";
+import { Constants } from "./gameLogic/index.js";
 import { StatusArea } from "./components/StatusArea.js";
 import { GAME_BACKGROUND_COLOR, StatusAreaConfig, StatusMessages } from "./constants/index.js";
 
@@ -12,7 +12,8 @@ export default class FrontEnd {
 
     constructor(game) {
         this.canvas = document.getElementById("canvas");
-        this.context = this.canvas.getContext("2d", { alpha: false });
+        this.canvas.style.background = GAME_BACKGROUND_COLOR;
+        this.context = this.canvas.getContext("2d");
         this.game = game;
         this.width = canvas.width;
         this.height = canvas.height;
@@ -21,13 +22,6 @@ export default class FrontEnd {
     }
 
     start() {
-        // Set game background
-        this.context.fillStyle = GAME_BACKGROUND_COLOR;
-        this.context.fillRect(0, 0, this.width, this.height);
-
-        // Save the state of context. `fillStyle` will revert to GAME_BACKGROUND_COLOR on next call to `this.context.restore()`.
-        this.context.save();
-
         this.statusArea = this.createStatusArea();
     }
 

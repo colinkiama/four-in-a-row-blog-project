@@ -7,7 +7,7 @@ export const StatusMessages = {
 };
 
 export const StatusAreaConfig = {
-    HEIGHT: 300,
+    HEIGHT: 100,
     PADDING_TOP: 40,
     INNER_MARGIN: 28,
     INDICATOR_WIDTH: 16

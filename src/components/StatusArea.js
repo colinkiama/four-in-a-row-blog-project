@@ -4,7 +4,7 @@ import GameObject from "./GameObject.js";
 
 export class StatusArea extends GameObject {
     render(indicatorColor, message) {
-        this.context.fillRect(0, 0, this.width, this.height);
+        this.clear();
 
         if (indicatorColor !== Constants.PlayerColor.NONE) {
             this.renderPlayerTurnIndicator(indicatorColor);

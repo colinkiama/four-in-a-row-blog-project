@@ -1,3 +1,5 @@
-import FourInARowGame from "./FourInARowGame.js";
+import { FourInARowGame } from "./FourInARow/index.js";
+import FrontEnd from "./FrontEnd.js";
 
-window.fourInARowGame = new FourInARowGame();
+let frontEnd = new FrontEnd(new FourInARowGame());
+frontEnd.start();

@@ -1,31 +1,19 @@
-export const GameStatus = {
-    IN_PROGRESS: "in-progress",
-    START: "start",
-    WIN: "win",
-    DRAW: "draw",
+export const GAME_BACKGROUND_COLOR = "#122A67";
+
+export const StatusMessages = {
+    DRAW: "DRAW!",
+    YELLOW_TURN: "YELLOW PLAYER'S TURN",
+    RED_TURN: "RED PLAYER'S TURN",
 };
 
-export const MoveStatus = {
-    INVALID: "invalid",
-    WIN: "win",
-    SUCCESS: "success",
-    DRAW: "draw",
+export const StatusAreaConfig = {
+    HEIGHT: 300,
+    PADDING_TOP: 40,
+    INNER_MARGIN: 28,
+    INDICATOR_WIDTH: 16
 };
 
-export const PlayerColor = {
-    NONE: "none",
-    YELLOW: "yellow",
-    RED: "red",
-};
-
-export const BoardDimensions = {
-    ROWS: 6,
-    COLUMNS: 7,
-    WIN_LINE_LENGTH: 4,
-};
-
-export const BoardToken = {
-    NONE: 0,
-    YELLOW: 1,
-    RED: 2,
+export const TokenColor = {
+    YELLOW: "#EAC02B",
+    RED: "#EA2B2B"
 };

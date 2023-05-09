@@ -13,6 +13,19 @@ export const StatusAreaConfig = {
     INDICATOR_WIDTH: 16
 };
 
+export const BoardConfig = {
+    WIDTH: 284,
+    HEIGHT: 242,
+    MARGIN_TOP: 20,
+    MARGIN_LEFT: 18,
+    HORIZONTAL_PADDING: 18,
+    VERTICAL_PADDING: 16,
+    SLOT_MARGIN: 8,
+    SLOT_RADIUS: 14,
+    BACKGROUND_COLOR: '#1D48B8',
+    SLOT_OUTLINE_COLOR: '#225FFD'
+};
+
 export const TokenColor = {
     YELLOW: "#EAC02B",
     RED: "#EA2B2B"

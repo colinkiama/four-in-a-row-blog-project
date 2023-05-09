@@ -2,7 +2,7 @@ import { Constants } from "../gameLogic/index.js";
 import { StatusAreaConfig, TokenColor } from "../constants/index.js";
 import GameObject from "./GameObject.js";
 
-export class StatusArea extends GameObject {
+export default class StatusArea extends GameObject {
     render(indicatorColor, message) {
         this.clear();
 

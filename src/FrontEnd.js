@@ -1,6 +1,6 @@
 import { Constants } from "./gameLogic/index.js";
-import { StatusArea } from "./components/StatusArea.js";
-import { GAME_BACKGROUND_COLOR, StatusAreaConfig, StatusMessages } from "./constants/index.js";
+import { Board, StatusArea } from "./components/index.js";
+import { BoardConfig, GAME_BACKGROUND_COLOR, StatusAreaConfig, StatusMessages } from "./constants/index.js";
 
 export default class FrontEnd {
     canvas;
@@ -9,6 +9,7 @@ export default class FrontEnd {
     width;
     height;
     statusArea;
+    board;
 
     constructor(game) {
         this.canvas = document.getElementById("canvas");
@@ -23,6 +24,13 @@ export default class FrontEnd {
 
     start() {
         this.statusArea = this.createStatusArea();
+        this.board = this.createBoard();
+    }
+
+    createBoard() {
+        let board = new Board(this.context, BoardConfig.MARGIN_LEFT, this.statusArea.height + BoardConfig.MARGIN_TOP, BoardConfig.WIDTH, BoardConfig.HEIGHT);
+        board.render(this.game.currentBoard);
+        return board;
     }
 
     createStatusArea() {

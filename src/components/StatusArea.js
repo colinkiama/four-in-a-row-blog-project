@@ -31,8 +31,11 @@ export default class StatusArea extends GameObject {
 
         this.context.fillStyle = indicatorColorValue;
         const indicatorY = this.y + StatusAreaConfig.INDICATOR_WIDTH / 2 + StatusAreaConfig.PADDING_TOP;
+        this.context.beginPath();
         this.context.arc(this.width / 2, indicatorY, StatusAreaConfig.INDICATOR_WIDTH / 2, 0, Math.PI * 2);
+        this.context.closePath();
         this.context.fill();
+
     }
 
     renderMessage(message) {

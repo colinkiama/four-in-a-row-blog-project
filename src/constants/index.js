@@ -21,12 +21,13 @@ export const BoardConfig = {
     HORIZONTAL_PADDING: 18,
     VERTICAL_PADDING: 16,
     SLOT_MARGIN: 8,
-    SLOT_RADIUS: 14,
+    SLOT_WIDTH: 28,
     BACKGROUND_COLOR: '#1D48B8',
     SLOT_OUTLINE_COLOR: '#225FFD'
 };
 
 export const TokenColor = {
+    NONE: "#D9D9D9",
     YELLOW: "#EAC02B",
     RED: "#EA2B2B"
 };

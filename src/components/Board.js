@@ -3,6 +3,8 @@ import { Constants } from "../gameLogic/index.js";
 import GameObject from "./GameObject.js";
 
 export default class Board extends GameObject {
+    columnSelected;
+
     render(nextBoard) {
         this.clear();
         this.renderBoardRectangle();
@@ -42,8 +44,6 @@ export default class Board extends GameObject {
                         break;
                 }
 
-                console.log("Token Color:", tokenColor);
-
                 this.renderSlot(slotX, slotY, slotRadius, tokenColor);
             }
         }
@@ -60,5 +60,32 @@ export default class Board extends GameObject {
         this.context.arc(x, y, radius - 1, 0, Math.PI * 2);
         this.context.closePath();
         this.context.fill();
+    }
+
+    setColumnSelectionHandler(callback) {
+        this.columnSelected = callback;
+    }
+
+    handleClick(clickEvent) {
+        this.trySelectColumn(clickEvent);
+    }
+
+    trySelectColumn(clickEvent) {
+        console.log("Click event:", clickEvent);
+        for (let columnIndex = 0; columnIndex < Constants.BoardDimensions.COLUMNS; columnIndex++) {
+            let columnX = this.x + BoardConfig.HORIZONTAL_PADDING + (columnIndex * BoardConfig.SLOT_MARGIN) + (columnIndex * BoardConfig.SLOT_WIDTH);
+            const wasColumnClicked = clickEvent.offsetX >= columnX
+                && clickEvent.offsetX <= (columnX + BoardConfig.SLOT_WIDTH)
+                && clickEvent.offsetY >= this.y + BoardConfig.VERTICAL_PADDING
+                && clickEvent.offsetY <= this.y + BoardConfig.HEIGHT - BoardConfig.VERTICAL_PADDING;
+
+            console.log("columnX:", columnX);
+            console.log("columnY:", this.y + BoardConfig.VERTICAL_PADDING);
+
+            if (wasColumnClicked) {
+                this.columnSelected(columnIndex);
+                break;
+            }
+        }
     }
 }

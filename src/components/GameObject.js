@@ -16,4 +16,6 @@ export default class GameObject {
     clear() {
         this.context.clearRect(this.x, this.y, this.width, this.height);
     }
+
+    handleClick(clickEvent) { }
 }

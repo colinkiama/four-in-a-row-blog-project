@@ -25,10 +25,15 @@ export default class FrontEnd {
     start() {
         this.statusArea = this.createStatusArea();
         this.board = this.createBoard();
+
+        document.body.addEventListener('click', (clickEvent) => {
+            this.board.handleClick(clickEvent);
+        });
     }
 
     createBoard() {
         let board = new Board(this.context, BoardConfig.MARGIN_LEFT, this.statusArea.height + BoardConfig.MARGIN_TOP, BoardConfig.WIDTH, BoardConfig.HEIGHT);
+        board.setColumnSelectionHandler((columnIndex) => this.playMove(columnIndex));
         board.render(this.game.currentBoard);
         return board;
     }
@@ -38,6 +43,15 @@ export default class FrontEnd {
         const statusMessage = this.game.currentTurn === Constants.PlayerColor.YELLOW ? StatusMessages.YELLOW_TURN : StatusMessages.RED_TURN;
         statusArea.render(this.game.currentTurn, statusMessage);
         return statusArea;
+    }
+
+    playMove(columnIndex) {
+        let moveResult = this.game.playMove(columnIndex);
+        this.processMoveResult(moveResult);
+    }
+
+    processMoveResult(moveResult) {
+        console.log("Move result:", moveResult);
     }
 }
 

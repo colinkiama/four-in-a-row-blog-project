@@ -4,6 +4,7 @@ import GameObject from "./GameObject.js";
 
 export default class StatusArea extends GameObject {
     render(indicatorColor, message) {
+        this.context.save();
         this.clear();
 
         if (indicatorColor !== Constants.PlayerColor.NONE) {

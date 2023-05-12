@@ -6,6 +6,7 @@ export default class Board extends GameObject {
     columnSelected;
 
     render(nextBoard) {
+        this.context.save();
         this.clear();
         this.renderBoardRectangle();
         this.renderSlots(nextBoard);

@@ -10,6 +10,7 @@ export default class FrontEnd {
     height;
     statusArea;
     board;
+    gameOver;
 
     constructor(game) {
         this.canvas = document.getElementById("canvas");
@@ -18,6 +19,7 @@ export default class FrontEnd {
         this.game = game;
         this.width = canvas.width;
         this.height = canvas.height;
+        this.gameOver = false;
 
         enableHiDPISupport(this.canvas, this.context);
     }
@@ -52,6 +54,31 @@ export default class FrontEnd {
 
     processMoveResult(moveResult) {
         console.log("Move result:", moveResult);
+        switch (moveResult.status.value) {
+            case Constants.MoveStatus.SUCCESS:
+                this.board.render(this.game.currentBoard);
+                break;
+            case Constants.MoveStatus.WIN:
+                if (!this.gameOver) {
+                    // Process Win Result
+
+
+                    this.board.render(this.game.currentBoard);
+                    this.gameOver = true;
+                }
+
+                break;
+            case Constants.MoveStatus.DRAW:
+                if (!this.gameOver) {
+                    // Process Draw Result
+
+
+                    this.board.render(this.game.currentBoard);
+                    this.gameOver = true;
+                }
+
+                break;
+        }
     }
 }
 

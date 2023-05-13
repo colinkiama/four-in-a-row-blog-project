@@ -42,8 +42,7 @@ export default class FrontEnd {
 
     createStatusArea() {
         let statusArea = new StatusArea(this.context, 0, 0, this.canvas.width, StatusAreaConfig.HEIGHT);
-        const statusMessage = this.game.currentTurn === Constants.PlayerColor.YELLOW ? StatusMessages.YELLOW_TURN : StatusMessages.RED_TURN;
-        statusArea.render(this.game.currentTurn, statusMessage);
+        statusArea.render(this.game.currentTurn, this.pickStatusMessage(this.game.status));
         return statusArea;
     }
 
@@ -54,31 +53,32 @@ export default class FrontEnd {
 
     processMoveResult(moveResult) {
         console.log("Move result:", moveResult);
-        switch (moveResult.status.value) {
-            case Constants.MoveStatus.SUCCESS:
-                this.board.render(this.game.currentBoard);
-                break;
-            case Constants.MoveStatus.WIN:
-                if (!this.gameOver) {
-                    // Process Win Result
 
-
-                    this.board.render(this.game.currentBoard);
-                    this.gameOver = true;
-                }
-
-                break;
-            case Constants.MoveStatus.DRAW:
-                if (!this.gameOver) {
-                    // Process Draw Result
-
-
-                    this.board.render(this.game.currentBoard);
-                    this.gameOver = true;
-                }
-
-                break;
+        if (this.gameOver || moveResult.status.value === Constants.MoveStatus.INVALID) {
+            return;
         }
+
+        const indicatorColor = moveResult.status.value === Constants.MoveStatus.DRAW ? Constants.PlayerColor.NONE : this.game.currentTurn;
+
+        this.statusArea.render(indicatorColor, this.pickStatusMessage(moveResult.status.value))
+        this.board.render(this.game.currentBoard);
+
+        if (moveResult.status.value === Constants.MoveStatus.WIN || moveResult.status.value === Constants.MoveStatus.DRAW) {
+            this.gameOver = true;
+        }
+    }
+
+    pickStatusMessage(status) {
+        switch (status) {
+            case Constants.GameStatus.WIN:
+                return this.game.currentTurn === Constants.PlayerColor.YELLOW ? StatusMessages.YELLOW_WIN : StatusMessages.RED_WIN;
+            case Constants.GameStatus.DRAW:
+                return StatusMessages.DRAW;
+        }
+
+        // At this point, we can assume that the game is either has just started 
+        // or is still in progress.
+        return this.game.currentTurn === Constants.PlayerColor.YELLOW ? StatusMessages.YELLOW_TURN : StatusMessages.RED_TURN;
     }
 }
 

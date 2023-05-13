@@ -214,16 +214,16 @@ export default class FourInARowGame {
                 break;
         }
 
-        let moveResults = this.performMove(columnIndex);
+        let moveResult = this.performMove(columnIndex);
 
         // Only change player turn when on a successful while the game is still in progress.
-        if (moveResults.status.value === Constants.MoveStatus.SUCCESS) {
+        if (moveResult.status.value === Constants.MoveStatus.SUCCESS) {
             this.currentTurn = this.currentTurn === Constants.PlayerColor.YELLOW
                 ? Constants.PlayerColor.RED
                 : Constants.PlayerColor.YELLOW;
         }
 
-        return moveResults;
+        return moveResult;
     }
 
     performMove(columnIndex) {

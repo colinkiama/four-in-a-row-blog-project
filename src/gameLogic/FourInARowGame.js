@@ -216,7 +216,7 @@ export default class FourInARowGame {
 
         let moveResult = this.performMove(columnIndex);
 
-        // Only change player turn when on a successful while the game is still in progress.
+        // Only change current turn while the game is still in progress.
         if (moveResult.status.value === Constants.MoveStatus.SUCCESS) {
             this.currentTurn = this.currentTurn === Constants.PlayerColor.YELLOW
                 ? Constants.PlayerColor.RED

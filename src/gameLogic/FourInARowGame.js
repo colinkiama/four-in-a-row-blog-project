@@ -216,8 +216,8 @@ export default class FourInARowGame {
 
         let moveResults = this.performMove(columnIndex);
 
-        // Do not change player turn if move is invalid
-        if (moveResults.status.value !== Constants.MoveStatus.INVALID) {
+        // Only change player turn when on a successful while the game is still in progress.
+        if (moveResults.status.value === Constants.MoveStatus.SUCCESS) {
             this.currentTurn = this.currentTurn === Constants.PlayerColor.YELLOW
                 ? Constants.PlayerColor.RED
                 : Constants.PlayerColor.YELLOW;

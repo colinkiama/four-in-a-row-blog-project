@@ -68,7 +68,18 @@ export default class PlayAgainButton extends GameObject {
         this.buttonClicked();
     }
 
-    disable() {
-        this.isEnabled = false;
+    clear() {
+        const clearRectX = this.x - PlayAgainButtonConfig.BORDER_WIDTH;
+        const clearRectY = this.y - PlayAgainButtonConfig.BORDER_WIDTH;
+        const clearRectWidth = this.width + PlayAgainButtonConfig.BORDER_WIDTH * 2;
+        const clearRectHeight = this.height + PlayAgainButtonConfig.BORDER_WIDTH * 2;
+
+        this.context.clearRect(clearRectX, clearRectY, clearRectWidth, clearRectHeight);
     }
+
+    hide() {
+        this.isEnabled = false;
+        this.clear();
+    }
+
 }

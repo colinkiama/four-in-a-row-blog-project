@@ -38,5 +38,6 @@ export const PlayAgainButtonConfig = {
     WIDTH: 128,
     HEIGHT: 40,
     TEXT: 'Play Again',
-    MARGIN_BOTTOM: 80
+    MARGIN_BOTTOM: 80,
+    BORDER_WIDTH: 2,
 };

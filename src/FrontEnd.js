@@ -62,11 +62,10 @@ export default class FrontEnd {
     }
 
     reset() {
-        this.playAgainButton.disable();
         this.game.reset();
         this.gameOver = false;
 
-        this.clear();
+        this.playAgainButton.hide();
         this.statusArea.render(this.game.currentTurn, this.pickStatusMessage(this.game.status));
         this.board.render(this.game.currentBoard);
     }

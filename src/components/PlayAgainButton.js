@@ -32,7 +32,7 @@ export default class PlayAgainButton extends GameObject {
         backgroundGradient.addColorStop(1, "#1D48BA");
 
         this.context.fillStyle = backgroundGradient;
-        this.context.strokeStyle = "2px black";
+        this.context.strokeStyle = "1px black";
         this.context.fillRect(this.x, this.y, this.width, this.height);
         this.context.strokeRect(this.x, this.y, this.width, this.height);
     }

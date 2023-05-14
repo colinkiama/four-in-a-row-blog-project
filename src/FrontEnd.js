@@ -53,7 +53,7 @@ export default class FrontEnd {
     }
 
     createStatusArea() {
-        let statusArea = new StatusArea(this.context, 0, 0, this.canvas.width, StatusAreaConfig.HEIGHT);
+        let statusArea = new StatusArea(this.context, 0, 0, this.width, StatusAreaConfig.HEIGHT);
         statusArea.render(this.game.currentTurn, this.pickStatusMessage(this.game.status));
         return statusArea;
     }

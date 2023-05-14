@@ -28,11 +28,11 @@ export default class PlayAgainButton extends GameObject {
 
     renderBackground() {
         const backgroundGradient = this.context.createLinearGradient(this.x, this.y, this.x, this.y + this.height);
-        backgroundGradient.addColorStop(0, "#225FFD");
-        backgroundGradient.addColorStop(1, "#1D48B8");
+        backgroundGradient.addColorStop(0, PlayAgainButtonConfig.BACKGROUND_START_COLOR);
+        backgroundGradient.addColorStop(1, PlayAgainButtonConfig.BACKGROUND_END_COLOR);
 
         this.context.fillStyle = backgroundGradient;
-        this.context.strokeStyle = "1px black";
+        this.context.strokeStyle = `${PlayAgainButtonConfig.BORDER_WIDTH}px black`;
         this.context.fillRect(this.x, this.y, this.width, this.height);
         this.context.strokeRect(this.x, this.y, this.width, this.height);
     }

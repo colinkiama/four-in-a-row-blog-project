@@ -14,7 +14,7 @@ export const StatusAreaConfig = {
     HEIGHT: 100,
     PADDING_TOP: 40,
     INNER_MARGIN: 28,
-    INDICATOR_WIDTH: 16
+    INDICATOR_WIDTH: 16,
 };
 
 export const BoardConfig = {
@@ -26,20 +26,22 @@ export const BoardConfig = {
     VERTICAL_PADDING: 16,
     SLOT_MARGIN: 8,
     SLOT_WIDTH: 28,
-    BACKGROUND_COLOR: '#1D48B8',
-    SLOT_OUTLINE_COLOR: '#225FFD'
+    BACKGROUND_COLOR: "#1D48B8",
+    SLOT_OUTLINE_COLOR: "#225FFD",
 };
 
 export const TokenColor = {
     NONE: "#D9D9D9",
     YELLOW: "#EAC02B",
-    RED: "#EA2B2B"
+    RED: "#EA2B2B",
 };
 
 export const PlayAgainButtonConfig = {
     WIDTH: 128,
     HEIGHT: 40,
-    TEXT: 'Play Again',
+    TEXT: "Play Again",
     MARGIN_BOTTOM: 80,
-    BORDER_WIDTH: 2,
+    BORDER_WIDTH: 1,
+    BACKGROUND_START_COLOR: "#225FFD",
+    BACKGROUND_END_COLOR: "#1D48B8",
 };

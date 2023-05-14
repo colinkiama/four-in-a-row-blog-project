@@ -1,7 +1,6 @@
 import { Constants } from "./gameLogic/index.js";
-import { Board, StatusArea } from "./components/index.js";
+import { Board, StatusArea, PlayAgainButton } from "./components/index.js";
 import { BoardConfig, GAME_BACKGROUND_COLOR, PlayAgainButtonConfig, StatusAreaConfig, StatusMessages } from "./constants/index.js";
-import PlayAgainButton from "./components/PlayAgainButton.js";
 
 export default class FrontEnd {
     canvas;

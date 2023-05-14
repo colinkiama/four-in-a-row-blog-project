@@ -78,8 +78,6 @@ export default class FrontEnd {
     }
 
     processMoveResult(moveResult) {
-        console.log("Move result:", moveResult);
-
         if (this.gameOver || moveResult.status.value === Constants.MoveStatus.INVALID) {
             return;
         }

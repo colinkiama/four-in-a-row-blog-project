@@ -27,9 +27,9 @@ export default class PlayAgainButton extends GameObject {
     }
 
     renderBackground() {
-        const backgroundGradient = this.context.createLinearGradient(0, 0, 0, this.height);
-        backgroundGradient.addColorStop(0, "#215EFC");
-        backgroundGradient.addColorStop(1, "#1D48BA");
+        const backgroundGradient = this.context.createLinearGradient(this.x, this.y, this.x, this.y + this.height);
+        backgroundGradient.addColorStop(0, "#225FFD");
+        backgroundGradient.addColorStop(1, "#1D48B8");
 
         this.context.fillStyle = backgroundGradient;
         this.context.strokeStyle = "1px black";

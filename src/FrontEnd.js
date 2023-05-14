@@ -1,6 +1,6 @@
 import { Constants } from "./gameLogic/index.js";
 import { Board, StatusArea, PlayAgainButton } from "./components/index.js";
-import { BoardConfig, GAME_BACKGROUND_COLOR, PlayAgainButtonConfig, StatusAreaConfig, StatusMessages } from "./constants/index.js";
+import { BoardConfig, FrontEndConfig, PlayAgainButtonConfig, StatusAreaConfig, StatusMessages } from "./constants/index.js";
 
 export default class FrontEnd {
     canvas;
@@ -15,7 +15,7 @@ export default class FrontEnd {
 
     constructor(game) {
         this.canvas = document.getElementById("canvas");
-        this.canvas.style.background = GAME_BACKGROUND_COLOR;
+        this.canvas.style.background = FrontEndConfig.GAME_BACKGROUND_COLOR;
         this.context = this.canvas.getContext("2d");
         this.game = game;
         this.width = canvas.width;

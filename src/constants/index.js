@@ -1,4 +1,6 @@
-export const GAME_BACKGROUND_COLOR = "#122A67";
+export const FrontEndConfig = {
+    GAME_BACKGROUND_COLOR: "#122A67",
+}
 
 export const StatusMessages = {
     DRAW: "DRAW!",

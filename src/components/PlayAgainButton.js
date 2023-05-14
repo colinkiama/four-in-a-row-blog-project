@@ -42,7 +42,13 @@ export default class PlayAgainButton extends GameObject {
         this.context.font = "16px Arial";
         this.context.textAlign = "center";
         this.context.textBaseline = "top";
-        this.context.fillText(PlayAgainButtonConfig.TEXT, this.x + PlayAgainButtonConfig.WIDTH / 2, this.y + PlayAgainButtonConfig.HEIGHT / 2);
+
+        const textMetrics = this.context.measureText(PlayAgainButtonConfig.TEXT);
+        const textHeight = textMetrics.actualBoundingBoxDescent;
+
+        const finalTextY = this.y + (this.height / 2) - textHeight / 2;
+
+        this.context.fillText(PlayAgainButtonConfig.TEXT, this.x + PlayAgainButtonConfig.WIDTH / 2, finalTextY);
     }
 
     handleClick(clickEvent) {

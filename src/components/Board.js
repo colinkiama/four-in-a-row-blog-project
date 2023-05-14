@@ -22,14 +22,15 @@ export default class Board extends GameObject {
         this.context.translate(this.x + BoardConfig.HORIZONTAL_PADDING, this.y + BoardConfig.VERTICAL_PADDING);
         this.context.strokeStyle = BoardConfig.SLOT_OUTLINE_COLOR;
         this.context.lineWidth = 2;
+
         const slotRadius = BoardConfig.SLOT_WIDTH / 2;
 
         for (let rowIndex = 0; rowIndex < Constants.BoardDimensions.ROWS; rowIndex++) {
             for (let columnIndex = 0; columnIndex < Constants.BoardDimensions.COLUMNS; columnIndex++) {
                 // Note slot is a circle. (x, y) coordinates are the circle's centre.
-                let slotX = (BoardConfig.SLOT_MARGIN * columnIndex) + (BoardConfig.SLOT_WIDTH * columnIndex) + slotRadius;
-                let slotY = (BoardConfig.SLOT_MARGIN * rowIndex) + (BoardConfig.SLOT_WIDTH * rowIndex) + slotRadius;
-                let tokenColorValue = nextBoard[rowIndex][columnIndex];
+                const slotX = (BoardConfig.SLOT_MARGIN * columnIndex) + (BoardConfig.SLOT_WIDTH * columnIndex) + slotRadius;
+                const slotY = (BoardConfig.SLOT_MARGIN * rowIndex) + (BoardConfig.SLOT_WIDTH * rowIndex) + slotRadius;
+                const tokenColorValue = nextBoard[rowIndex][columnIndex];
 
                 let tokenColor;
 
@@ -73,7 +74,9 @@ export default class Board extends GameObject {
 
     trySelectColumn(clickEvent) {
         for (let columnIndex = 0; columnIndex < Constants.BoardDimensions.COLUMNS; columnIndex++) {
-            let columnX = this.x + BoardConfig.HORIZONTAL_PADDING + (columnIndex * BoardConfig.SLOT_MARGIN) + (columnIndex * BoardConfig.SLOT_WIDTH);
+            const totalSlotMargins = columnIndex * BoardConfig.SLOT_MARGIN;
+            const totalPreviousSlotWidths = columnIndex * BoardConfig.SLOT_WIDTH;
+            const columnX = this.x + BoardConfig.HORIZONTAL_PADDING + totalSlotMargins + totalPreviousSlotWidths;
 
             const wasColumnClicked = clickEvent.offsetX >= columnX
                 && clickEvent.offsetX <= (columnX + BoardConfig.SLOT_WIDTH)

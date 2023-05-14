@@ -28,8 +28,14 @@ export default class Board extends GameObject {
         for (let rowIndex = 0; rowIndex < Constants.BoardDimensions.ROWS; rowIndex++) {
             for (let columnIndex = 0; columnIndex < Constants.BoardDimensions.COLUMNS; columnIndex++) {
                 // Note slot is a circle. (x, y) coordinates are the circle's centre.
-                const slotX = (BoardConfig.SLOT_MARGIN * columnIndex) + (BoardConfig.SLOT_WIDTH * columnIndex) + slotRadius;
-                const slotY = (BoardConfig.SLOT_MARGIN * rowIndex) + (BoardConfig.SLOT_WIDTH * rowIndex) + slotRadius;
+                const totalSlotMarginsX = BoardConfig.SLOT_MARGIN * columnIndex;
+                const totalPreviousSlotWidthsX = BoardConfig.SLOT_WIDTH * columnIndex;
+                const slotX = totalSlotMarginsX + totalPreviousSlotWidthsX + slotRadius;
+
+                const totalSlotMarginsY = BoardConfig.SLOT_MARGIN * rowIndex;
+                const totalPreviousSlotWidthsY = BoardConfig.SLOT_WIDTH * rowIndex;
+                const slotY = totalSlotMarginsY + totalPreviousSlotWidthsY + slotRadius;
+
                 const tokenColorValue = nextBoard[rowIndex][columnIndex];
 
                 let tokenColor;
@@ -74,8 +80,8 @@ export default class Board extends GameObject {
 
     trySelectColumn(clickEvent) {
         for (let columnIndex = 0; columnIndex < Constants.BoardDimensions.COLUMNS; columnIndex++) {
-            const totalSlotMargins = columnIndex * BoardConfig.SLOT_MARGIN;
-            const totalPreviousSlotWidths = columnIndex * BoardConfig.SLOT_WIDTH;
+            const totalSlotMargins = BoardConfig.SLOT_MARGIN * columnIndex;
+            const totalPreviousSlotWidths = BoardConfig.SLOT_WIDTH * columnIndex;
             const columnX = this.x + BoardConfig.HORIZONTAL_PADDING + totalSlotMargins + totalPreviousSlotWidths;
 
             const wasColumnClicked = clickEvent.offsetX >= columnX

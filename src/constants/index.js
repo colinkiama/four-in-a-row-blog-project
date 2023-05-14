@@ -37,5 +37,6 @@ export const TokenColor = {
 export const PlayAgainButtonConfig = {
     WIDTH: 128,
     HEIGHT: 40,
-    TEXT: 'Play Again'
+    TEXT: 'Play Again',
+    MARGIN_BOTTOM: 80
 };

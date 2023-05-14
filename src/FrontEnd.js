@@ -39,7 +39,7 @@ export default class FrontEnd {
 
     createPlayAgainButton() {
         let buttonX = this.width / 2 - PlayAgainButtonConfig.WIDTH / 2;
-        let buttonY = this.height - 80;
+        let buttonY = this.height - PlayAgainButtonConfig.MARGIN_BOTTOM;
         let button = new PlayAgainButton(this.context, buttonX, buttonY, PlayAgainButtonConfig.WIDTH, PlayAgainButtonConfig.HEIGHT);
         button.setClickHandler(() => this.reset());
         return button;

@@ -1,6 +1,7 @@
 import { Constants } from "./gameLogic/index.js";
 import { Board, StatusArea } from "./components/index.js";
-import { BoardConfig, GAME_BACKGROUND_COLOR, StatusAreaConfig, StatusMessages } from "./constants/index.js";
+import { BoardConfig, GAME_BACKGROUND_COLOR, PlayAgainButtonConfig, StatusAreaConfig, StatusMessages } from "./constants/index.js";
+import PlayAgainButton from "./components/PlayAgainButton.js";
 
 export default class FrontEnd {
     canvas;
@@ -10,6 +11,7 @@ export default class FrontEnd {
     height;
     statusArea;
     board;
+    playAgainButton;
     gameOver;
 
     constructor(game) {
@@ -27,10 +29,20 @@ export default class FrontEnd {
     start() {
         this.statusArea = this.createStatusArea();
         this.board = this.createBoard();
+        this.playAgainButton = this.createPlayAgainButton();
 
         document.body.addEventListener('click', (clickEvent) => {
             this.board.handleClick(clickEvent);
+            this.playAgainButton.handleClick(clickEvent);
         });
+    }
+
+    createPlayAgainButton() {
+        let buttonX = this.width / 2 - PlayAgainButtonConfig.WIDTH / 2;
+        let buttonY = this.height - 80;
+        let button = new PlayAgainButton(this.context, buttonX, buttonY, PlayAgainButtonConfig.WIDTH, PlayAgainButtonConfig.HEIGHT);
+        button.setClickHandler(() => this.reset());
+        return button;
     }
 
     createBoard() {
@@ -44,6 +56,20 @@ export default class FrontEnd {
         let statusArea = new StatusArea(this.context, 0, 0, this.canvas.width, StatusAreaConfig.HEIGHT);
         statusArea.render(this.game.currentTurn, this.pickStatusMessage(this.game.status));
         return statusArea;
+    }
+
+    clear() {
+        this.context.clearRect(0, 0, this.width, this.height);
+    }
+
+    reset() {
+        this.playAgainButton.disable();
+        this.game.reset();
+        this.gameOver = false;
+
+        this.clear();
+        this.statusArea.render(this.game.currentTurn, this.pickStatusMessage(this.game.status));
+        this.board.render(this.game.currentBoard);
     }
 
     playMove(columnIndex) {
@@ -65,6 +91,10 @@ export default class FrontEnd {
 
         if (moveResult.status.value === Constants.MoveStatus.WIN || moveResult.status.value === Constants.MoveStatus.DRAW) {
             this.gameOver = true;
+        }
+
+        if (this.gameOver) {
+            this.playAgainButton.render();
         }
     }
 

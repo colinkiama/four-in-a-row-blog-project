@@ -7,10 +7,7 @@ export default class FourInARowGame {
     currentBoard;
 
     constructor() {
-        this.startingColor = Constants.PlayerColor.YELLOW;
-        this.currentTurn = this.startingColor;
-        this.status = Constants.GameStatus.START;
-        this.currentBoard = FourInARowGame.createBoard();
+        this.reset();
     }
 
     static createBoard() {
@@ -197,6 +194,13 @@ export default class FourInARowGame {
         }
 
         return true;
+    }
+
+    reset() {
+        this.startingColor = Constants.PlayerColor.YELLOW;
+        this.currentTurn = this.startingColor;
+        this.status = Constants.GameStatus.START;
+        this.currentBoard = FourInARowGame.createBoard();
     }
 
     playMove(columnIndex) {

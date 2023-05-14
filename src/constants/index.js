@@ -33,3 +33,9 @@ export const TokenColor = {
     YELLOW: "#EAC02B",
     RED: "#EA2B2B"
 };
+
+export const PlayAgainButtonConfig = {
+    WIDTH: 128,
+    HEIGHT: 40,
+    TEXT: 'Play Again'
+};

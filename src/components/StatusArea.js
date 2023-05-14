@@ -40,10 +40,10 @@ export default class StatusArea extends GameObject {
 
     renderMessage(message) {
         this.context.fillStyle = "white";
-        this.context.font = "bold 1rem Arial";
+        this.context.font = "bold 16px Arial";
         this.context.textBaseline = "top";
         this.context.textAlign = "center";
         const messageY = this.y + StatusAreaConfig.PADDING_TOP + StatusAreaConfig.INNER_MARGIN;
-        this.context.fillText(message, this.width / 2, messageY, 300);
+        this.context.fillText(message, this.width / 2, messageY);
     }
 }
